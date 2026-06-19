@@ -1,4 +1,4 @@
-import { FiAlertTriangle, FiX } from 'react-icons/fi';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 const ConfirmModal = ({ isOpen, title, message, onConfirm, onCancel, confirmText = 'Delete', danger = true }) => {
   if (!isOpen) return null;

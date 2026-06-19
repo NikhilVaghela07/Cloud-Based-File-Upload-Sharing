@@ -1,31 +1,29 @@
 import { useState, useEffect } from 'react';
 import { FiUploadCloud, FiSearch, FiFolder } from 'react-icons/fi';
-import { useAuth } from '../context/AuthContext';
 import FileCard from '../components/FileCard';
 import UploadModal from '../components/UploadModal';
 import API from '../api/axios';
 
 const Dashboard = () => {
-  const { user } = useAuth();
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showUpload, setShowUpload] = useState(false);
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    fetchFiles();
-  }, []);
-
   const fetchFiles = async () => {
     try {
       const res = await API.get('/files');
       setFiles(res.data.files);
-    } catch (err) {
+    } catch (_err) {
       console.error('Failed to fetch files');
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchFiles();
+  }, []);
 
   const handleUploaded = (newFile) => {
     setFiles((prev) => [newFile, ...prev]);

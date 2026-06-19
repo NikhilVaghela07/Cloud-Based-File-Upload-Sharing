@@ -44,7 +44,7 @@ const FileCard = ({ file, onUpdate, onDelete }) => {
     try {
       const res = await API.get(`/files/download/${file._id}`);
       window.open(res.data.url, '_blank');
-    } catch (err) {
+    } catch (_err) {
       toast.error('Download failed. Please try again.');
     }
   };
@@ -54,7 +54,7 @@ const FileCard = ({ file, onUpdate, onDelete }) => {
       await API.delete(`/files/${file._id}`);
       onDelete(file._id);
       toast.success(`"${file.displayName}" deleted successfully`);
-    } catch (err) {
+    } catch (_err) {
       toast.error('Delete failed. Please try again.');
     } finally {
       setShowDeleteConfirm(false);
@@ -73,7 +73,7 @@ const FileCard = ({ file, onUpdate, onDelete }) => {
       onUpdate(res.data.file);
       setIsRenaming(false);
       toast.success('File renamed successfully');
-    } catch (err) {
+    } catch (_err) {
       toast.error('Rename failed. Please try again.');
     } finally {
       setLoading(false);
@@ -85,7 +85,7 @@ const FileCard = ({ file, onUpdate, onDelete }) => {
       const res = await API.patch(`/files/${file._id}/visibility`);
       onUpdate(res.data.file);
       toast.success(`File is now ${res.data.file.visibility}`);
-    } catch (err) {
+    } catch (_err) {
       toast.error('Failed to update visibility');
     }
   };
