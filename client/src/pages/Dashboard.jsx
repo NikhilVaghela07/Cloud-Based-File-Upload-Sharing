@@ -10,19 +10,18 @@ const Dashboard = () => {
   const [showUpload, setShowUpload] = useState(false);
   const [search, setSearch] = useState('');
 
-  const fetchFiles = async () => {
-    try {
-      const res = await API.get('/files');
-      setFiles(res.data.files);
-    } catch (_err) {
-      console.error('Failed to fetch files');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchFiles();
+    const loadFiles = async () => {
+      try {
+        const res = await API.get('/files');
+        setFiles(res.data.files);
+      } catch {
+        console.error('Failed to fetch files');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadFiles();
   }, []);
 
   const handleUploaded = (newFile) => {
