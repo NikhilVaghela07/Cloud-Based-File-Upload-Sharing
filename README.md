@@ -207,12 +207,6 @@ Visit **http://localhost:5173** and start using CloudShare!
 
 ---
 
-## 📸 Screenshots
-
-> Add your screenshots here after running the application.
-
----
-
 ## 🤝 Contributing
 
 1. Fork the repository
