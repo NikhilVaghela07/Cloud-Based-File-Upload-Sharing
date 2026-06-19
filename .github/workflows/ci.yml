@@ -20,11 +20,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: client/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: client
 
       - name: Lint
@@ -47,12 +45,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: server/package-lock.json
+          node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
         working-directory: server
 
       - name: Syntax check
